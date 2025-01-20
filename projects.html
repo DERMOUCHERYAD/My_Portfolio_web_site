@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Projets</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" class="h-10"></a>
+        </div>
+        <ul id="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+
+                <div class="project-content">
+                    <h3>Analyse des Incidents de Cybersécurité </h3>
+                    <p>Mise en place de contre-mesures basées sur le cadre NIST CSF et rédaction de
+                        rapports sur des attaques simulées (DDoS, SYN Flood, brute force) avec capture
+                        et analyse des logs réseau via tcpdump et Wireshark.</p>
+                    <ul class="tech-stack">
+                        <li> NIST CSF</li>
+                        <li> NIST RMF</li>
+                        <li>tcpdump</li>
+                        <li>SYN Flood</li>
+                        <li>SIEM </li>
+                    </ul>
+                    <a href="https://github.com/DERMOUCHERYAD" class="btn-primary" target="_blank">Voir
+                        sur GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-content">
+                    <h3> Réalisation d’un Mini SGBD</h3>
+                    <p> Développement d’un SGBD en Python, intégrant la création et la gestion de
+                        bases de données et de tables, la manipulation de tuples, ainsi que l’exécution
+                        d’opérations relationnelles.</p>
+                    <ul class="tech-stack">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>JAVA</li>
+                    </ul>
+                    <a href="https://github.com/DERMOUCHERYAD/SGBD_Python" class="btn-primary" target="_blank">Voir
+                        sur GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+
+                <div class="project-content">
+                    <h3> Interprète "Cowsay" </h3>
+                    <p>Conception et développement d'un interprète utilisant Bash, C et la théorie des
+                        automates, explorant la commande "Cowsay".
+                    </p>
+                    <ul class="tech-stack">
+                        <li>C</li>
+                        <li>Bash</li>
+                        <li> Automates</li>
+                    </ul>
+                    <a href="https://github.com/DERMOUCHERYAD/cowsay-automation-linux" class="btn-primary"
+                        target="_blank">Voir sur
+                        GitHub</a>
+                </div>
+            </div>
+            <!-- Project 4 -->
+            <div class="project-card">
+
+                <div class="project-content">
+                    <h3> Application Desktop Graphix </h3>
+                    <p>Résolution du problème de coloration des graphes en utilisant la logique du
+                        premier ordre, avec l'intégration des bibliothèques "Tkinter", "Matplotlib" et
+                        "NetworkX". </p>
+                    <ul class="tech-stack">
+                        <li>Python</li>
+                        <li>Premier Ordre</li>
+                        <li> Tkinter</li>
+                        <li>Matplotlib</li>
+                        <li>NetworkX</li>
+
+                    </ul>
+                    <a href="https://github.com/DERMOUCHERYAD/GraphiX-Graph-Coloring" class="btn-primary"
+                        target="_blank">Voir sur
+                        GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Amayas Gherbi - Tous droits réservés</p>
+    </footer>
+
+    <!-- JavaScript pour le menu hamburger -->
+    <script src="assets/JS/main.js"></script>
+</body>
+
+</html>

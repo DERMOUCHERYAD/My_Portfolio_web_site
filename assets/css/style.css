@@ -1,0 +1,580 @@
+/* Styles de base */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4a5c9d;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #667eea;
+}
+
+/* Navbar */
+nav {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    /* Fixe la navigation en haut */
+    width: 100%;
+    /* Assure que la barre prend toute la largeur de l'écran */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* Assure que la barre reste au-dessus des autres éléments */
+}
+
+.logo img {
+    height: auto;
+    width: 50px;
+    /* Taille par défaut du logo */
+    max-width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav a {
+    color: #4a5c9d;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #764ba2;
+}
+
+/* Style du bouton hamburger */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* Affiche le hamburger et masque les liens sur les petits écrans */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        /* Affiche le bouton hamburger */
+    }
+
+    nav ul {
+        display: none;
+        /* Cache les liens de navigation */
+        flex-direction: column;
+        gap: 1rem;
+        position: absolute;
+        top: 60px;
+        /* En dessous de la barre de navigation */
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul.show {
+        display: flex;
+        /* Affiche les liens en colonne quand le menu est ouvert */
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+}
+
+.hero-animation {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.typed-text {
+    color: #ffdf8e;
+    font-weight: bold;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: white;
+    width: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Infos Section */
+.infos-section {
+    padding: 2rem;
+    background-color: #e9eef5;
+    text-align: center;
+}
+
+.infos-section .section-title {
+    font-size: 2rem;
+    color: #4a5c9d;
+    margin-bottom: 1.5rem;
+}
+
+.infos-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 2rem;
+    background-color: #e9eef5;
+    text-align: center;
+}
+
+.skills-section .section-title {
+    font-size: 2rem;
+    color: #4a5c9d;
+    margin-bottom: 1.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.skill-box {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.skill-box:hover {
+    transform: translateY(-10px);
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.skill-box h3 {
+    font-size: 1.25rem;
+    color: #4a5c9d;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: #4a5c9d;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Responsive Styles for Infos and Skills */
+@media (max-width: 768px) {
+
+    .infos-content,
+    .skills-grid {
+        padding: 1rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Media Query pour les petits écrans (600px et moins) */
+@media (max-width: 600px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-animation {
+        font-size: 1.25rem;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+    }
+
+    /* Navbar */
+    .logo img {
+        width: 100px;
+        /* Taille réduite du logo sur petits écrans */
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+
+
+
+/* Contact Section */
+.contact-section {
+    padding: 2rem;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.contact-section .section-title {
+    font-size: 2rem;
+    color: #4a5c9d;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-item p {
+    font-size: 1.1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: #4a5c9d;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.contact-form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    border: none;
+    background-color: #4a5c9d;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #667eea;
+}
+
+/* Responsive Design for Contact Section */
+@media (max-width: 768px) {
+    .contact-info {
+        align-items: flex-start;
+    }
+}
+
+
+/* Projects Section */
+.projects-section {
+    padding: 2rem;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #4a5c9d;
+    margin-bottom: 2rem;
+}
+
+/* Grid for Project Cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 projets par ligne sur grand écran */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Project Card */
+.project-card {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+}
+
+.project-content {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    color: #4a5c9d;
+    margin-bottom: 0.5rem;
+}
+
+.project-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Tech Stack */
+.tech-stack {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tech-stack li {
+    background-color: #4a5c9d;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.875rem;
+}
+
+.project-content .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 0.875rem;
+    transition: background-color 0.3s ease;
+}
+
+.project-content .btn-primary:hover {
+    background-color: #667eea;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        /* 1 projet par ligne sur mobile */
+
+    }
+}
+
+
+/* Hero Section */
+.about-hero {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-hero p {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.about-hero .btn-primary {
+    margin-top: 1rem;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-photo {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-bio {
+    flex: 2;
+    padding: 1rem;
+}
+
+.profile-bio h2 {
+    color: #4a5c9d;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile-bio p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Skills Section */
+.skills-section {
+    background-color: #f4f4f4;
+    padding: 2rem;
+    text-align: center;
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    color: #4a5c9d;
+    margin-bottom: 2rem;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.skill {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.skill:hover {
+    transform: translateY(-10px);
+}
+
+.skill i {
+    font-size: 2.5rem;
+    color: #4a5c9d;
+    margin-bottom: 0.5rem;
+}
+
+/* Fun Facts Section */
+.fun-facts-section {
+    padding: 2rem;
+    background-color: #e9eef5;
+    text-align: center;
+}
+
+.fun-facts-section h2 {
+    color: #4a5c9d;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.fun-facts {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.fact {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 200px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.fact i {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}

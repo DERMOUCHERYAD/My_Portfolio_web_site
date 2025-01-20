@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Mohammed Ryad DERMOUCHE</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" class="h-10"></a>
+        </div>
+        <ul id="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2 class="section-title">Contact</h2>
+        <p>N'hésitez pas à me contacter pour toute question, opportunité de collaboration ou simplement pour échanger.
+        </p>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope icon"></i>
+                <p>Email : <a href="mailto:dermoucheryad@gmail.com">dermoucheryad@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin icon"></i>
+                <p>LinkedIn : <a href="https://www.linkedin.com/in/mohammed-ryad-dermouche-0ba079228"
+                        target="_blank">Profil
+                        LinkedIn</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github icon"></i>
+                <p>GitHub : <a href="https://github.com/DERMOUCHERYAD" target="_blank">Profil GitHub</a></p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" action="https://formspree.io/f/{votre_endpoint}" method="POST">
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+            <button type="submit" class="btn-primary">Envoyer</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DERMOUCHE Mohammed Ryad - Tous droits réservés</p>
+    </footer>
+
+    <!-- JavaScript pour le menu hamburger -->
+    <script src="assets/JS/main.js"></script>
+</body>
+
+</html>
