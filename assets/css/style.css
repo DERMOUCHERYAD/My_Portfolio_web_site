@@ -1,48 +1,81 @@
+:root {
+    --bg-color: #0F0E17;
+    /* Couleur de fond globale */
+    --lighter-bg: #121212;
+    /* Variante plus claire pour certains blocs */
+    --text-color: #E6E6E6;
+    /* Couleur de texte par défaut */
+    --accent-color: #00FFD1;
+    /* Couleur d’accent (néon) */
+    --secondary-color: #FD3A69;
+    /* Couleur secondaire (pour hover ou contrastes) */
+    --hover-color: #14FFE9;
+    /* Autre nuance si besoin pour le hover */
+    --transition-speed: 0.3s;
+
+    --shadow-color: rgba(0, 255, 209, 0.4);
+    /* Ombre néon légère */
+    --border-color: rgba(230, 230, 230, 0.2);
+    /* Bordure discrète */
+}
+
+
+
 /* Styles de base */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
 }
 
 a {
     text-decoration: none;
+    color: var(--accent-color);
+    transition: color var(--transition-speed);
 }
+
+a:hover {
+    color: var(--hover-color);
+}
+
 
 .btn-primary {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4a5c9d;
-    color: white;
+    background-color: var(--accent-color);
+    color: #0F0E17;
+    /* Contraste : texte sombre sur fond néon */
     border-radius: 8px;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-speed);
+    box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .btn-primary:hover {
-    background-color: #667eea;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 /* Navbar */
 nav {
-    background-color: #fff;
+    background-color: var(--lighter-bg);
+    /* ou var(--bg-color), selon le contraste */
     display: flex;
     align-items: center;
     position: fixed;
-    /* Fixe la navigation en haut */
     width: 100%;
-    /* Assure que la barre prend toute la largeur de l'écran */
     top: 0;
     left: 0;
     z-index: 1000;
-    /* Assure que la barre reste au-dessus des autres éléments */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
 }
 
 .logo img {
-    height: auto;
     width: 50px;
-    /* Taille par défaut du logo */
-    max-width: 100%;
+    /* Conservez si besoin */
+    height: auto;
 }
 
 nav ul {
@@ -56,20 +89,23 @@ nav ul li {
 }
 
 nav a {
-    color: #4a5c9d;
+    color: var(--accent-color);
     font-weight: bold;
+    position: relative;
+    transition: color var(--transition-speed);
 }
 
 nav a:hover {
-    color: #764ba2;
+    color: var(--hover-color);
 }
 
-/* Style du bouton hamburger */
+/* Hamburger */
 .hamburger {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
     margin-left: auto;
+    color: var(--accent-color);
 }
 
 /* Affiche le hamburger et masque les liens sur les petits écrans */
@@ -88,7 +124,7 @@ nav a:hover {
         top: 60px;
         /* En dessous de la barre de navigation */
         left: 0;
-        background-color: #fff;
+        background-color: var(--lighter-bg);
         width: 100%;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
@@ -101,10 +137,41 @@ nav a:hover {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    /* On peut faire un fond plus sombre avec un léger dégradé néon */
+    background: linear-gradient(135deg, #121212, #0F0E17);
+    color: var(--text-color);
     padding: 100px 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+            var(--accent-color) 0%,
+            transparent 70%);
+    animation: pulse 5s infinite;
+}
+
+/* Animation pulsante pour le halo */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 }
 
 .hero-section h1 {
@@ -123,7 +190,7 @@ nav a:hover {
 
 .cursor {
     display: inline-block;
-    background-color: white;
+    background-color: var(--bg-color);
     width: 5px;
     animation: blink 0.7s infinite;
 }
@@ -143,13 +210,13 @@ nav a:hover {
 /* Infos Section */
 .infos-section {
     padding: 2rem;
-    background-color: #e9eef5;
+    background-color: var(--bg-color);
     text-align: center;
 }
 
 .infos-section .section-title {
     font-size: 2rem;
-    color: #4a5c9d;
+    color: #d7ddf2;
     margin-bottom: 1.5rem;
 }
 
@@ -157,7 +224,7 @@ nav a:hover {
     max-width: 800px;
     margin: 0 auto;
     padding: 1.5rem;
-    background-color: white;
+    background-color: var(--bg-color);
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
@@ -167,7 +234,7 @@ nav a:hover {
 /* Skills Section */
 .skills-section {
     padding: 2rem;
-    background-color: #e9eef5;
+    background-color: var(--bg-color);
     text-align: center;
 }
 
@@ -187,7 +254,7 @@ nav a:hover {
 }
 
 .skill-box {
-    background-color: white;
+    background-color: var(--bg-color);
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -211,13 +278,14 @@ nav a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* Footer */
 footer {
-    background-color: #4a5c9d;
-    color: white;
+    background-color: var(--lighter-bg);
+    color: var(--text-color);
     padding: 1rem;
     text-align: center;
+    border-top: 1px solid var(--border-color);
 }
+
 
 /* Responsive Styles for Infos and Skills */
 @media (max-width: 768px) {
@@ -263,9 +331,21 @@ footer {
 
 /* Contact Section */
 .contact-section {
-    padding: 2rem;
-    background-color: #f4f4f4;
+    background-color: var(--bg-color);
     text-align: center;
+    padding: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background-color: var(--lighter-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.contact-form button {
+    background-color: var(--accent-color);
+    color: #0F0E17;
 }
 
 .contact-section .section-title {
@@ -350,9 +430,11 @@ footer {
 /* Projects Section */
 .projects-section {
     padding: 2rem;
-    background-color: #f4f4f4;
+    background-color: var(--bg-color);
+    /* thème sombre */
     text-align: center;
 }
+
 
 .section-title {
     font-size: 2.5rem;
@@ -374,13 +456,18 @@ footer {
 .project-card {
     border-radius: 10px;
     overflow: hidden;
-    background-color: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
+    background-color: var(--lighter-bg);
+    /* fond sombre */
+    color: var(--text-color);
+    /* texte clair ou néon */
+    box-shadow: 0 0 10px var(--shadow-color);
+    transition: transform var(--transition-speed),
+        box-shadow var(--transition-speed);
 }
 
 .project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 .project-image {
@@ -391,17 +478,19 @@ footer {
 .project-content {
     padding: 1.5rem;
     text-align: left;
+    color: var(--text-color);
 }
 
 .project-content h3 {
     font-size: 1.5rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
+    /* titre du projet en néon */
     margin-bottom: 0.5rem;
 }
 
 .project-content p {
-    font-size: 1rem;
-    color: #555;
+    color: var(--text-color);
+    /* ou var(--accent-color) si vous voulez tout en néon */
     margin-bottom: 1rem;
 }
 
@@ -417,7 +506,7 @@ footer {
 
 .tech-stack li {
     background-color: #4a5c9d;
-    color: white;
+    color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 5px;
     font-size: 0.875rem;
@@ -500,13 +589,13 @@ footer {
 
 .profile-bio p {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-color);
     line-height: 1.6;
 }
 
 /* Skills Section */
 .skills-section {
-    background-color: #f4f4f4;
+    background-color: var(--bg-color);
     padding: 2rem;
     text-align: center;
 }
@@ -525,18 +614,25 @@ footer {
 }
 
 .skill {
-    background: white;
+    background-color: var(--lighter-bg);
+    /* fond sombre */
+    color: var(--accent-color);
+    /* texte néon */
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--shadow-color);
+    /* Ombre néon légère, ex: 0 0 10px rgba(0,255,209,0.3) */
     text-align: center;
     width: 200px;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed),
+        box-shadow var(--transition-speed);
 }
 
 .skill:hover {
     transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
+
 
 .skill i {
     font-size: 2.5rem;
@@ -547,7 +643,7 @@ footer {
 /* Fun Facts Section */
 .fun-facts-section {
     padding: 2rem;
-    background-color: #e9eef5;
+    background-color: var(--bg-color);
     text-align: center;
 }
 
@@ -565,16 +661,46 @@ footer {
 }
 
 .fact {
-    background: white;
+    background-color: var(--lighter-bg);
+    color: var(--accent-color);
     border-radius: 10px;
     padding: 1.5rem;
     width: 200px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--shadow-color);
     text-align: center;
+    transition: transform var(--transition-speed),
+        box-shadow var(--transition-speed);
 }
+
+.fact:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
 
 .fact i {
     font-size: 2.5rem;
     color: #667eea;
     margin-bottom: 0.5rem;
+}
+
+@keyframes neonGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 8px var(--accent-color),
+            0 0 20px var(--accent-color),
+            0 0 40px var(--accent-color);
+    }
+
+    50% {
+        text-shadow: 0 0 4px var(--accent-color),
+            0 0 10px var(--accent-color),
+            0 0 20px var(--accent-color);
+    }
+}
+
+.section-title {
+    color: var(--accent-color);
+    animation: neonGlow 2s infinite;
 }
