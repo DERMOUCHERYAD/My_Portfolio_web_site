@@ -1,25 +1,48 @@
+/* 
+  PALETTE & VARIABLES 
+  -------------------
+  - bg-color / lighter-bg : pour les fonds
+  - text-color : pour le texte par défaut
+  - accent-turquoise / accent-green / accent-magenta : vos trois couleurs néon
+  - accent-color / hover-color : variables "par défaut" si besoin
+  - shadow-color : ombre néon
+*/
+
 :root {
     --bg-color: #0F0E17;
-    /* Couleur de fond globale */
+    /* Fond principal très sombre */
     --lighter-bg: #121212;
-    /* Variante plus claire pour certains blocs */
+    /* Variante plus claire pour les blocs */
     --text-color: #E6E6E6;
-    /* Couleur de texte par défaut */
-    --accent-color: #00FFD1;
-    /* Couleur d’accent (néon) */
-    --secondary-color: #FD3A69;
-    /* Couleur secondaire (pour hover ou contrastes) */
-    --hover-color: #14FFE9;
-    /* Autre nuance si besoin pour le hover */
-    --transition-speed: 0.3s;
+    /* Texte clair */
 
-    --shadow-color: rgba(0, 255, 209, 0.4);
-    /* Ombre néon légère */
+    /* Vos 3 couleurs néon : */
+    --accent-turquoise: #14FFE9;
+    --accent-green: #19FF70;
+    --accent-magenta: #FD3A69;
+
+    /* Par commodité, on peut définir un "accent" et un "hover" par défaut */
+    --accent-color: var(--accent-turquoise);
+    --hover-color: var(--accent-green);
+
+    --transition-speed: 0.3s;
     --border-color: rgba(230, 230, 230, 0.2);
-    /* Bordure discrète */
+
+    /*
+      Ombre néon légère (par ex. turquoise).
+      Vous pouvez créer d'autres ombres, ex:
+        --shadow-green: rgba(25, 255, 112, 0.4);
+        --shadow-magenta: rgba(253, 58, 105, 0.4);
+      et les utiliser où vous voulez.
+    */
+    --shadow-color: rgba(20, 255, 233, 0.4);
 }
 
-
+/* 
+  -----------------
+  STYLES DE BASE 
+  -----------------
+*/
 
 /* Styles de base */
 body {
@@ -40,26 +63,30 @@ a:hover {
 }
 
 
+/* Bouton principal */
 .btn-primary {
     display: inline-block;
     padding: 10px 20px;
     background-color: var(--accent-color);
     color: #0F0E17;
-    /* Contraste : texte sombre sur fond néon */
+    /* Contraste sur le bouton (texte sombre sur fond néon) */
     border-radius: 8px;
-    transition: background-color var(--transition-speed);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
     box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .btn-primary:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--hover-color);
     box-shadow: 0 0 15px var(--shadow-color);
 }
 
-/* Navbar */
+/* 
+  -----------------
+  NAVBAR 
+  -----------------
+*/
 nav {
     background-color: var(--lighter-bg);
-    /* ou var(--bg-color), selon le contraste */
     display: flex;
     align-items: center;
     position: fixed;
@@ -74,7 +101,6 @@ nav {
 
 .logo img {
     width: 50px;
-    /* Conservez si besoin */
     height: auto;
 }
 
@@ -99,7 +125,7 @@ nav a:hover {
     color: var(--hover-color);
 }
 
-/* Hamburger */
+/* Hamburger pour mobile */
 .hamburger {
     display: none;
     font-size: 1.5rem;
@@ -108,21 +134,17 @@ nav a:hover {
     color: var(--accent-color);
 }
 
-/* Affiche le hamburger et masque les liens sur les petits écrans */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
-        /* Affiche le bouton hamburger */
     }
 
     nav ul {
         display: none;
-        /* Cache les liens de navigation */
         flex-direction: column;
         gap: 1rem;
         position: absolute;
         top: 60px;
-        /* En dessous de la barre de navigation */
         left: 0;
         background-color: var(--lighter-bg);
         width: 100%;
@@ -131,13 +153,15 @@ nav a:hover {
 
     nav ul.show {
         display: flex;
-        /* Affiche les liens en colonne quand le menu est ouvert */
     }
 }
 
-/* Hero Section */
+/* 
+  -----------------
+  HERO SECTION 
+  -----------------
+*/
 .hero-section {
-    /* On peut faire un fond plus sombre avec un léger dégradé néon */
     background: linear-gradient(135deg, #121212, #0F0E17);
     color: var(--text-color);
     padding: 100px 0;
@@ -146,6 +170,7 @@ nav a:hover {
     overflow: hidden;
 }
 
+/* Halo pulsant au fond */
 .hero-section::before {
     content: "";
     position: absolute;
@@ -153,13 +178,12 @@ nav a:hover {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle,
-            var(--accent-color) 0%,
-            transparent 70%);
-    animation: pulse 5s infinite;
+    background: radial-gradient(circle, var(--shadow-color) 0%, transparent 70%);
+    animation: pulse 3s infinite;
+    /* Le point crucial : */
+    pointer-events: none;
 }
 
-/* Animation pulsante pour le halo */
 @keyframes pulse {
 
     0%,
@@ -183,8 +207,10 @@ nav a:hover {
     margin-top: 1rem;
 }
 
+/* Effet "typewriter" */
 .typed-text {
-    color: #ffdf8e;
+    color: var(--accent-green);
+    /* par exemple, une autre couleur néon */
     font-weight: bold;
 }
 
@@ -207,7 +233,11 @@ nav a:hover {
     }
 }
 
-/* Infos Section */
+/* 
+  -----------------
+  INFOS SECTION 
+  -----------------
+*/
 .infos-section {
     padding: 2rem;
     background-color: var(--bg-color);
@@ -216,7 +246,8 @@ nav a:hover {
 
 .infos-section .section-title {
     font-size: 2rem;
-    color: #d7ddf2;
+    color: var(--accent-color);
+    /* Titre néon */
     margin-bottom: 1.5rem;
 }
 
@@ -226,12 +257,18 @@ nav a:hover {
     padding: 1.5rem;
     background-color: var(--bg-color);
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* On peut changer l’ombre pour un halo plus néon si souhaité */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     font-size: 1.1rem;
     line-height: 1.6;
 }
 
-/* Skills Section */
+
+/* 
+  -----------------
+  SKILLS SECTION 
+  -----------------
+*/
 .skills-section {
     padding: 2rem;
     background-color: var(--bg-color);
@@ -240,7 +277,7 @@ nav a:hover {
 
 .skills-section .section-title {
     font-size: 2rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
     margin-bottom: 1.5rem;
 }
 
@@ -254,30 +291,37 @@ nav a:hover {
 }
 
 .skill-box {
-    background-color: var(--bg-color);
+    background-color: var(--lighter-bg);
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* Ombre discrète + effet de survol */
+    box-shadow: 0 0 10px var(--shadow-color);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .skill-box:hover {
     transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 .icon {
     font-size: 2.5rem;
-    color: #667eea;
+    color: var(--accent-color);
+    /* Icône en néon */
     margin-bottom: 1rem;
 }
 
 .skill-box h3 {
     font-size: 1.25rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
+    /* Titre de la skill en néon ou vert */
     margin-bottom: 0.5rem;
 }
 
+/*
+  Footer
+*/
 footer {
     background-color: var(--lighter-bg);
     color: var(--text-color);
@@ -286,8 +330,9 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-
-/* Responsive Styles for Infos and Skills */
+/* 
+  RESPONSIVE (Infos + Skills)
+*/
 @media (max-width: 768px) {
 
     .infos-content,
@@ -300,7 +345,9 @@ footer {
     }
 }
 
-/* Media Query pour les petits écrans (600px et moins) */
+/* 
+  RESPONSIVE (Hero, Navbar, etc.)
+*/
 @media (max-width: 600px) {
     .hero-section h1 {
         font-size: 2rem;
@@ -314,10 +361,8 @@ footer {
         padding: 8px 16px;
     }
 
-    /* Navbar */
     .logo img {
         width: 100px;
-        /* Taille réduite du logo sur petits écrans */
     }
 
     nav ul {
@@ -327,8 +372,6 @@ footer {
 }
 
 
-
-
 /* Contact Section */
 .contact-section {
     background-color: var(--bg-color);
@@ -336,27 +379,17 @@ footer {
     padding: 2rem;
 }
 
-.contact-form input,
-.contact-form textarea {
-    background-color: var(--lighter-bg);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-}
-
-.contact-form button {
-    background-color: var(--accent-color);
-    color: #0F0E17;
-}
-
 .contact-section .section-title {
     font-size: 2rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
+    /* Titre en néon */
     margin-bottom: 1rem;
 }
 
 .contact-section p {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-color);
+    /* Remplace #555 par var(--text-color) */
     margin-bottom: 2rem;
 }
 
@@ -377,11 +410,13 @@ footer {
 
 .contact-item p {
     font-size: 1.1rem;
+    color: var(--text-color);
 }
 
 .icon {
     font-size: 1.5rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
+    /* Icône en néon */
 }
 
 /* Contact Form */
@@ -397,7 +432,10 @@ footer {
 .contact-form textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    background-color: var(--lighter-bg);
+    /* Fond sombre pour les champs */
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     font-size: 1rem;
     resize: vertical;
@@ -407,16 +445,19 @@ footer {
     align-self: flex-start;
     padding: 10px 20px;
     border: none;
-    background-color: #4a5c9d;
-    color: white;
+    background-color: var(--accent-color);
+    color: #0F0E17;
+    /* Contraste (texte sombre sur fond néon) */
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .contact-form button:hover {
-    background-color: #667eea;
+    background-color: var(--hover-color);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 /* Responsive Design for Contact Section */
@@ -427,18 +468,20 @@ footer {
 }
 
 
-/* Projects Section */
+/* 
+  -----------------
+  PROJECTS SECTION 
+  -----------------
+*/
 .projects-section {
     padding: 2rem;
     background-color: var(--bg-color);
-    /* thème sombre */
     text-align: center;
 }
 
-
 .section-title {
     font-size: 2.5rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
     margin-bottom: 2rem;
 }
 
@@ -446,28 +489,31 @@ footer {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* 2 projets par ligne sur grand écran */
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Project Card */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Carte projet */
 .project-card {
     border-radius: 10px;
     overflow: hidden;
     background-color: var(--lighter-bg);
-    /* fond sombre */
     color: var(--text-color);
-    /* texte clair ou néon */
     box-shadow: 0 0 10px var(--shadow-color);
-    transition: transform var(--transition-speed),
-        box-shadow var(--transition-speed);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 15px var(--shadow-color);
+    box-shadow: 0 0 15px var(--accent-green);
 }
 
 .project-image {
@@ -478,23 +524,21 @@ footer {
 .project-content {
     padding: 1.5rem;
     text-align: left;
-    color: var(--text-color);
 }
 
 .project-content h3 {
     font-size: 1.5rem;
     color: var(--accent-color);
-    /* titre du projet en néon */
+    /* Titre projet en néon */
     margin-bottom: 0.5rem;
 }
 
 .project-content p {
-    color: var(--text-color);
-    /* ou var(--accent-color) si vous voulez tout en néon */
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
-/* Tech Stack */
+/* Tech stack */
 .tech-stack {
     list-style: none;
     padding: 0;
@@ -505,22 +549,30 @@ footer {
 }
 
 .tech-stack li {
-    background-color: #4a5c9d;
-    color: var(--text-color);
+    background-color: var(--accent-color);
+    color: #0F0E17;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     font-size: 0.875rem;
+    transition: background-color var(--transition-speed);
 }
 
+.tech-stack li:hover {
+    background-color: var(--hover-color);
+}
+
+/* Bouton dans la project card */
 .project-content .btn-primary {
     display: inline-block;
     padding: 10px 20px;
     font-size: 0.875rem;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-magenta);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .project-content .btn-primary:hover {
-    background-color: #667eea;
+    background-color: var(--accent-magenta);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 /* Responsive Design */
@@ -535,8 +587,21 @@ footer {
 
 /* Hero Section */
 .about-hero {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #0f270b, var(--shadow-color));
     color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* 
+  -----------------
+  ABOUT HERO 
+  -----------------
+*/
+.about-hero {
+    /* Dégradé sombre + nuance turquoise */
+    background: linear-gradient(135deg, var(--bg-color), #121212);
+    color: var(--text-color);
     padding: 100px 20px;
     text-align: center;
 }
@@ -544,6 +609,8 @@ footer {
 .about-hero h1 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    /* ou var(--text-color) si vous préférez */
 }
 
 .about-hero p {
@@ -555,7 +622,11 @@ footer {
     margin-top: 1rem;
 }
 
-/* Profile Section */
+/* 
+  -----------------
+  PROFILE SECTION 
+  -----------------
+*/
 .profile-section {
     display: flex;
     align-items: center;
@@ -573,7 +644,7 @@ footer {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .profile-bio {
@@ -582,8 +653,8 @@ footer {
 }
 
 .profile-bio h2 {
-    color: #4a5c9d;
     font-size: 2rem;
+    color: var(--accent-color);
     margin-bottom: 1rem;
 }
 
@@ -602,7 +673,8 @@ footer {
 
 .skills-section h2 {
     font-size: 2.5rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
+    /* Titre de section en néon */
     margin-bottom: 2rem;
 }
 
@@ -615,13 +687,13 @@ footer {
 
 .skill {
     background-color: var(--lighter-bg);
-    /* fond sombre */
+    /* Fond sombre pour la carte */
     color: var(--accent-color);
-    /* texte néon */
+    /* Texte en néon */
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 0 10px var(--shadow-color);
-    /* Ombre néon légère, ex: 0 0 10px rgba(0,255,209,0.3) */
+    /* Ombre néon légère */
     text-align: center;
     width: 200px;
     transition: transform var(--transition-speed),
@@ -633,14 +705,19 @@ footer {
     box-shadow: 0 0 15px var(--shadow-color);
 }
 
-
 .skill i {
     font-size: 2.5rem;
-    color: #4a5c9d;
+    color: var(--accent-color);
+    /* Icône en néon */
     margin-bottom: 0.5rem;
 }
 
-/* Fun Facts Section */
+
+/* 
+  -----------------
+  FUN FACTS SECTION 
+  -----------------
+*/
 .fun-facts-section {
     padding: 2rem;
     background-color: var(--bg-color);
@@ -648,7 +725,7 @@ footer {
 }
 
 .fun-facts-section h2 {
-    color: #4a5c9d;
+    color: var(--accent-color);
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
 }
@@ -662,14 +739,13 @@ footer {
 
 .fact {
     background-color: var(--lighter-bg);
-    color: var(--accent-color);
+    color: var(--text-color);
     border-radius: 10px;
     padding: 1.5rem;
     width: 200px;
     box-shadow: 0 0 10px var(--shadow-color);
     text-align: center;
-    transition: transform var(--transition-speed),
-        box-shadow var(--transition-speed);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .fact:hover {
@@ -677,13 +753,17 @@ footer {
     box-shadow: 0 0 15px var(--shadow-color);
 }
 
-
 .fact i {
     font-size: 2.5rem;
-    color: #667eea;
+    color: var(--accent-color);
     margin-bottom: 0.5rem;
 }
 
+/* 
+  -----------------
+  EFFET NEON GLOW (OPTIONNEL) 
+  -----------------
+*/
 @keyframes neonGlow {
 
     0%,
@@ -700,7 +780,7 @@ footer {
     }
 }
 
+/* Exemple d'utilisation sur .section-title */
 .section-title {
-    color: var(--accent-color);
     animation: neonGlow 2s infinite;
 }
