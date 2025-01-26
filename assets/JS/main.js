@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 // Envoie des données avec Fetch
-                const response = await fetch("https://formspree.io/f/xyzywpke", {
+                const response = await fetch("https://formspree.io/f/xblddyol", {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json'
