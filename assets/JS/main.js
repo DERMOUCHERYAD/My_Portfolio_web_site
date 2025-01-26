@@ -57,7 +57,7 @@ async function notifyVisit() {
     visitData.append('ip_address', visitorIP || 'IP non disponible');
     visitData.append('timestamp', new Date().toLocaleString());
 
-    fetch("https://formspree.io/f/mrbeekeg", {
+    fetch("https://formspree.io/f/xblddyol", {
         method: 'POST',
         headers: {
             'Accept': 'application/json'
