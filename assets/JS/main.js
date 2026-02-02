@@ -122,3 +122,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+/* ================================
+   SKILLS CAROUSEL LOGIC
+   ================================ */
+
+const skillsTrack = document.querySelector('.skills-track');
+const skillDots = document.querySelectorAll('.skills-dot');
+const prevBtn = document.querySelector('.skills-nav.left');
+const nextBtn = document.querySelector('.skills-nav.right');
+
+let currentSkillIndex = 0;
+
+function updateSkillsCarousel() {
+    skillsTrack.style.transform = `translateX(-${currentSkillIndex * 100}%)`;
+    skillDots.forEach(dot => dot.classList.remove('active'));
+    skillDots[currentSkillIndex].classList.add('active');
+}
+
+nextBtn.addEventListener('click', () => {
+    currentSkillIndex = (currentSkillIndex + 1) % skillDots.length;
+    updateSkillsCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+    currentSkillIndex =
+        (currentSkillIndex - 1 + skillDots.length) % skillDots.length;
+    updateSkillsCarousel();
+});
+
+skillDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentSkillIndex = index;
+        updateSkillsCarousel();
+    });
+});
+
