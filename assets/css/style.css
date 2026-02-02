@@ -784,3 +784,90 @@ footer {
 .section-title {
     animation: neonGlow 2s infinite;
 }
+
+/* ================================
+   SKILLS CAROUSEL (UPDATED)
+   ================================ */
+
+.skills-carousel {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.skills-track {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+}
+
+.skills-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* Reuse existing skill-box design */
+.skills-slide .skill-box {
+    background-color: var(--lighter-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px var(--shadow-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.skills-slide .skill-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
+/* Navigation arrows */
+.skills-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0 10px;
+}
+
+.skills-nav.left {
+    left: 0;
+}
+
+.skills-nav.right {
+    right: 0;
+}
+
+/* Dots */
+.skills-dots {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.skills-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.skills-dot.active {
+    background-color: var(--accent-color);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .skills-slide {
+        grid-template-columns: 1fr;
+    }
+}
